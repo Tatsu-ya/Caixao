@@ -1,0 +1,929 @@
+<TelaCriarConta>:
+    Screen:
+        MDFloatLayout:
+            orientation: "vertical"
+            MDTopAppBar:
+                elevation: 3
+                title: '[size=20]                             Criar Conta[/size]'
+                anchor_title: 'center'
+                pos_hint: { "center_y": .97}
+                md_bg_color: '#2d2734'
+        MDIconButton:
+            icon: "arrow-left-bold-circle-outline"
+            pos_hint: {"center_x": .05, "center_y": .97}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            on_release: root.manager.current = "TelaLogin"
+
+        MDFloatLayout:
+            MDTextField:
+                size_hint_x: .8
+                hint_text: 'Usuário:'
+                pos_hint: {'center_x': .5, 'center_y': .75}
+                icon_left: "account-outline"
+                line_color_focus: "blue"
+                hint_text_color_normal: "blue"
+
+            MDTextField:
+                id: usuario
+                size_hint_x: .8
+                hint_text: 'E-mail:'
+                validator: 'email'
+                pos_hint: {'center_x': .5, 'center_y': .65}
+                icon_left: "email"
+                line_color_focus: "blue"
+                hint_text_color_normal: "blue"
+
+            MDTextField:
+                id: senha
+                size_hint_x: .8
+                hint_text: 'Senha:'
+                max_text_length: 8
+                pos_hint: {'center_x': .5, 'center_y': .55}
+                line_color_focus: "blue"
+                password: True
+                icon_left: "key-variant"
+                hint_text_color_normal: "blue"
+
+            MDTextField:
+                id: confsenha
+                size_hint_x: .8
+                hint_text: 'Confirme a Senha:'
+                max_text_length: 8
+                pos_hint: {'center_x': .5, 'center_y': .45}
+                line_color_focus: "blue"
+                password: True
+                icon_left: "key-variant"
+                hint_text_color_normal: "blue"
+
+            MDTextField:
+                id: data
+                size_hint_x: .8
+                hint_text: "Data de nascimento:"
+                helper_text: "dd/mm/yyyy"
+                validator: "date"
+                date_format: "dd/mm/yyyy"
+                pos_hint: {'center_x': .5, 'center_y': .35}
+                icon_left: "calendar-today"
+
+            MDRaisedButton:
+                size_hint_x: .8
+                pos_hint: {'center_x': .5, 'center_y': .25}
+                text: 'Criar Conta'
+                md_bg_color: '#2d2734'
+
+
+##########################################################################################
+
+<TelaRecSenha>:
+
+    Screen:
+        MDFloatLayout:
+            orientation: "vertical"
+            MDTopAppBar:
+                elevation: 3
+                title: '[size=20]                             Recuperar Senha[/size]'
+                anchor_title: 'center'
+
+                pos_hint: { "center_y": .97}
+                md_bg_color: '#2d2734'
+        MDIconButton:
+            icon: "arrow-left-bold-circle-outline"
+            pos_hint: {"center_x": .05, "center_y": .97}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            on_release: root.manager.current = "TelaLogin"
+        MDTextField:
+            size_hint_x: .8
+            hint_text: 'E-mail:'
+            pos_hint: {'center_x': .5, 'center_y': .58}
+            icon_right: "account-outline"
+        MDFillRoundFlatIconButton:
+            text: 'Enviar Email de recuperação'
+            font_size: 20
+            size_hint_x: .8
+            pos_hint: {'center_x': .5, 'center_y': .38}
+            md_bg_color: '#2d2734'
+            icon: "email-fast-outline"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+
+
+        MDIconButton:
+            icon: 'lock-question'
+            icon_size: "150sp"
+            pos_hint: {'center_x': .5, 'center_y': .75}
+
+
+
+##########################################################################################
+
+<TelaLogin>:
+    MDIconButton:
+        pos_hint: {'center_x': .7, 'center_y': .78}
+        icon: 'map-marker-outline'
+        icon_size: "75sp"
+
+    MDTextField:
+        size_hint_x: .8
+        hint_text: 'E-mail:'
+        pos_hint: {'center_x': .5, 'center_y': .58}
+        mode: "fill"
+        icon_right: "account-outline"
+
+
+    MDTextField:
+        size_hint_x: .8
+        hint_text: 'Senha:'
+        pos_hint: {'center_x': .5, 'center_y': .48}
+        helper_text: "Campo Obrigatório"
+        mode: "fill"
+        password: True
+        icon_right: "lock"
+
+
+
+
+    MDFillRoundFlatButton:
+        text: 'Entrar'
+        font_size: 20
+        size_hint_x: .8
+        pos_hint: {'center_x': .5, 'center_y': .38}
+
+        on_release: root.manager.current = "TelaHome"
+
+
+
+    MDFillRoundFlatButton:
+        text: 'Entrar com Gmail'
+        font_size: 20
+        size_hint_x: .8
+        pos_hint: {'center_x': .5, 'center_y': .32}
+
+    MDFillRoundFlatButton:
+        text: 'Entrar com Facebook'
+        font_size: 20
+        size_hint_x: .8
+        pos_hint: {'center_x': .5, 'center_y': .26}
+
+
+
+    MDScreen:
+        MDSmartTile:
+            radius: 24
+            box_radius: [0, 0, 10, 10]
+            box_color: 1, 1, 1, .2
+            source: "https://www.publi.com.br/wp-content/uploads/2020/01/publi.png"
+            pos_hint: {"center_x": .4, "center_y": .77}
+            size_hint_x: .4
+            size_hint_y: .2
+            size: "320dp", "320dp"
+
+    MDTextButton:
+        size_hint_x: .8
+        pos_hint: {"center_x": .5, "center_y": .17}
+        text:'Esqueci a senha'
+        color: "blue"
+        on_release: root.manager.current = "TelaRecSenha"
+
+    MDTextButton:
+        size_hint_x: .8
+        pos_hint: {"center_x": .5, "center_y": .10}
+        text:'Criar Conta'
+        color: "blue"
+        on_release: root.manager.current = "TelaCriarConta"
+
+
+
+##########################################################################################
+<DrawerClickableItem>:
+    focus_color: "#BB86FC"
+    text_color: "#4a4939"
+    icon_color: "#2d2734"
+    ripple_color: "#c5bdd2"
+    selected_color: "#2d2734"
+
+##########################################################################################
+
+<DrawerLabelItem>:
+    text_color: "#4a4939"
+    icon_color: "#2d2734"
+    focus_behavior: False
+    selected_color: "#2d2734"
+    _no_ripple_effect: True
+
+##########################################################################################
+
+<TelaHome>:
+    MDScreen:
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .8, .7
+            pos_hint: {'center_x': .5, 'center_y': .45}
+            orientation: 'vertical'
+            elevation: 4
+            MDScrollView:
+
+            MDList:
+                ThreeLineIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Loja xxx"
+
+                    IconLeftWidget:
+                        icon: "storefront-outline"
+
+                ThreeLineIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Casa xxx"
+
+                    IconLeftWidget:
+                        icon: "home-outline"
+
+                ThreeLineIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Apartamento xxx"
+
+                    IconLeftWidget:
+                        icon: "office-building-outline"
+
+                ThreeLineIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Fabrica xxx"
+
+                    IconLeftWidget:
+                        icon: "factory"
+
+                ThreeLineIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Trabalho xxx"
+
+                    IconLeftWidget:
+                        icon: "briefcase-outline"
+
+                ThreeLineIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Loja xxx"
+
+                    IconLeftWidget:
+                        icon: "storefront-outline"
+
+                ThreeLineIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Loja xxx"
+
+                    IconLeftWidget:
+                        icon: "storefront-outline"
+
+        MDFillRoundFlatIconButton:
+            md_bg_color: '#2d2734'
+            text: "Mostrar Todos os Endereços"
+            icon: "google-maps"
+            icon_size: "25sp"
+            pos_hint: {"center_x": .50, "center_y": .09}
+            on_release: root.manager.current = "TelaEnd"
+
+        MDFillRoundFlatIconButton:
+            md_bg_color: '#2d2734'
+            text_size: '25sp'
+            text: "Adicionar um novo Endereço"
+            icon: "plus"
+            icon_size: "25sp"
+            pos_hint: {"center_x": .67, "center_y": .81}
+
+        MDNavigationLayout:
+
+            MDScreenManager:
+
+                MDScreen:
+                    MDTopAppBar:
+                        title: 'PubliEnd'
+                        right_action_items: [["magnify", lambda x: x], ["account-circle-outline", lambda x: x]]
+                        left_action_items:  [["menu", lambda x: nav_drawer.set_state("open")]]
+                        pos_hint: {'center_y': .97}
+                        orientation: "vertical"
+                        md_bg_color: '#2d2734'
+
+
+            MDNavigationDrawer:
+                id: nav_drawer
+                radius: (0, 16, 16, 0)
+
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerHeader:
+                        title: "PubliEnd"
+                        text: "Informática"
+                        source: "https://www.publi.com.br/wp-content/uploads/2020/01/publi.png"
+                        spacing: "4dp"
+                        padding: "12dp", 0, 0, "56dp"
+
+
+                    DrawerClickableItem:
+                        icon: "google-maps"
+                        text: "Meus endereços"
+                        on_release: root.manager.current = "TelaEnd"
+
+
+                    DrawerClickableItem:
+                        icon: "plus"
+                        text: "Novo endereço"
+                        on_release: root.manager.current = "TelaCriarEnd"
+
+
+                    DrawerClickableItem:
+                        icon: "map-search-outline"
+                        text: "Descubrir CEP"
+                        on_release: root.manager.current = "BuscaCEP"
+
+                    DrawerClickableItem:
+                        icon: "earth-plus"
+                        text: "Consultar CEP"
+                        on_release: root.manager.current = "BuscaEnd"
+
+                    MDNavigationDrawerDivider:
+                    DrawerClickableItem:
+                        icon: "account-circle-outline"
+                        text: "Minha Conta"
+
+                    DrawerClickableItem:
+                        icon: "cog-outline"
+                        text: "Configuração"
+
+                    DrawerClickableItem:
+                        icon: "link"
+                        text: "publi.com.br"
+
+##########################################################################################
+<TelaEnd>:
+    MDBoxLayout:
+        orientation: "vertical"
+        size_hint_y:.9
+        MDTextField:
+            id: pesq
+            hint_text: "pesquisar item"
+            icon_right: "magnify"
+            size_hint_x:.9
+        MDFillRoundFlatIconButton:
+            id: botton1
+            size_hint_x: .8
+            md_bg_color: '#2d2734'
+            text_size: '25sp'
+            text: "filtar lista"
+            icon: "home-search-outline"
+            icon_size: "25sp"
+            pos_hint: {"center_x": .5, "center_y": .7}
+            on_release: root.Filtro()
+        MDScrollView:
+            MDList:
+                id: lista
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Loja xxx"
+
+                    IconLeftWidget:
+                        icon: "storefront-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Casa xxx"
+
+                    IconLeftWidget:
+                        icon: "home-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Apartamento xxx"
+
+                    IconLeftWidget:
+                        icon: "office-building-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Fabrica xxx"
+
+                    IconLeftWidget:
+                        icon: "factory"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Trabalho xxx"
+
+                    IconLeftWidget:
+                        icon: "briefcase-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Loja xxx"
+
+                    IconLeftWidget:
+                        icon: "storefront-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Loja xxx"
+
+                    IconLeftWidget:
+                        icon: "storefront-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Loja xxx"
+
+                    IconLeftWidget:
+                        icon: "storefront-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Casa xxx"
+
+                    IconLeftWidget:
+                        icon: "home-outline"
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+                ThreeLineAvatarIconListItem:
+                    text: "XXXXXXXXX"
+                    secondary_text: "Rua xxx , 000 - Bairro xxx, cidade xxx"
+                    tertiary_text: "Apartamento xxx"
+
+                    IconLeftWidget:
+                        icon: "office-building-outline"
+
+                    IconRightWidget:
+                        icon: "dots-vertical"
+
+
+    MDScreen:
+        MDNavigationLayout:
+            MDScreenManager:
+                MDScreen:
+                    MDTopAppBar:
+                        title: 'Meus Endereços'
+                        right_action_items: [["magnify", lambda x: x], ["account-circle-outline", lambda x: x]]
+                        left_action_items:  [["menu", lambda x: nav_drawer.set_state("open")]]
+                        pos_hint: {'center_y': .97}
+                        orientation: "vertical"
+                        md_bg_color: '#2d2734'
+
+            MDNavigationDrawer:
+                id: nav_drawer
+                radius: (0, 16, 16, 0)
+
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerHeader:
+                        title: "PubliEnd"
+                        text: "Informática"
+                        source: "https://www.publi.com.br/wp-content/uploads/2020/01/publi.png"
+                        spacing: "4dp"
+                        padding: "12dp", 0, 0, "56dp"
+
+
+                    DrawerClickableItem:
+                        icon: "google-maps"
+                        text: "Meus endereços"
+                        on_release: root.manager.current = "TelaEnd"
+
+                    DrawerClickableItem:
+                        icon: "plus"
+                        text: "Novo endereço"
+                        on_release: root.manager.current = "TelaCriarEnd"
+
+                    DrawerClickableItem:
+                        icon: "map-search-outline"
+                        text: "Descubrir CEP"
+                        on_release: root.manager.current = "BuscaCEP"
+
+                    DrawerClickableItem:
+                        icon: "earth-plus"
+                        text: "Consultar CEP"
+                        on_release: root.manager.current = "BuscaEnd"
+
+                    MDNavigationDrawerDivider:
+                    DrawerClickableItem:
+                        icon: "account-circle-outline"
+                        text: "Minha Conta"
+
+                    DrawerClickableItem:
+                        icon: "cog-outline"
+                        text: "Configuração"
+
+                    DrawerClickableItem:
+                        icon: "link"
+                        text: "publi.com.br"
+
+##########################################################################################
+<TelaCriarEnd>:
+    MDScreen:
+        MDFloatLayout:
+            MDTextField:
+                id: rua1
+                text: "sssss"
+                size_hint_x: .8
+                hint_text: 'Rua:'
+                pos_hint: {'center_x': .5, 'center_y': .80}
+                icon_right: "account-outline"
+
+            MDTextField:
+                id: bairro1
+                size_hint_x: .8
+                hint_text: 'Bairro:'
+                pos_hint: {'center_x': .5, 'center_y': .70}
+
+                icon_right: "account-outline"
+
+            MDTextField:
+                id: cidade1
+                size_hint_x: .8
+                hint_text: 'Cidade:'
+                pos_hint: {'center_x': .5, 'center_y': .60}
+
+                icon_right: "account-outline"
+
+            MDTextField:
+                id: numero1
+                size_hint_x: .3
+                hint_text: 'Numero:'
+                pos_hint: {'center_x': .3, 'center_y': .50}
+
+                icon_right: "account-outline"
+
+            MDTextField:
+                id: uf1
+                size_hint_x: .3
+                hint_text: 'uf:'
+                pos_hint: {'center_x': .7, 'center_y': .50}
+                icon_right: "account-outline"
+
+
+            MDTextField:
+                id: comp1
+                size_hint_x: .8
+                hint_text: 'Complemento:'
+                pos_hint: {'center_x': .5, 'center_y': .40}
+
+                icon_right: "account-outline"
+
+
+            MDFillRoundFlatIconButton:
+                id: SalvarEnd
+                md_bg_color: '#2d2734'
+                text_size: '25sp'
+                text: "Adicionar endereço a minha lista"
+                icon: "plus"
+                icon_size: "25sp"
+                pos_hint: {"center_x": .5, "center_y": .20}
+
+
+
+    MDScreen:
+        MDNavigationLayout:
+            MDScreenManager:
+                MDScreen:
+                    MDTopAppBar:
+                        title: 'Novo Endereço'
+                        right_action_items: [["magnify", lambda x: x], ["account-circle-outline", lambda x: x]]
+                        left_action_items:  [["menu", lambda x: nav_drawer.set_state("open")]]
+                        pos_hint: {'center_y': .97}
+                        orientation: "vertical"
+                        md_bg_color: '#2d2734'
+
+            MDNavigationDrawer:
+                id: nav_drawer
+                radius: (0, 16, 16, 0)
+
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerHeader:
+                        title: "PubliEnd"
+                        text: "Informática"
+                        source: "https://www.publi.com.br/wp-content/uploads/2020/01/publi.png"
+                        spacing: "4dp"
+                        padding: "12dp", 0, 0, "56dp"
+
+
+                    DrawerClickableItem:
+                        icon: "google-maps"
+                        text: "Meus endereços"
+                        on_release: root.manager.current = "TelaEnd"
+
+                    DrawerClickableItem:
+                        icon: "plus"
+                        text: "Novo endereço"
+                        on_release: root.manager.current = "TelaCriarEnd"
+
+                    DrawerClickableItem:
+                        icon: "map-search-outline"
+                        text: "Descubrir CEP"
+                        on_release: root.manager.current = "BuscaCEP"
+
+                    DrawerClickableItem:
+                        icon: "earth-plus"
+                        text: "Consultar CEP"
+                        on_release: root.manager.current = "BuscaEnd"
+
+                    MDNavigationDrawerDivider:
+                    DrawerClickableItem:
+                        icon: "account-circle-outline"
+                        text: "Minha Conta"
+
+                    DrawerClickableItem:
+                        icon: "cog-outline"
+                        text: "Configuração"
+
+                    DrawerClickableItem:
+                        icon: "link"
+                        text: "publi.com.br"
+
+##########################################################################################
+<BuscaCEP>:
+
+
+
+    MDScreen:
+        MDNavigationLayout:
+            MDScreenManager:
+                MDScreen:
+                    MDTopAppBar:
+                        title: 'Novo Endereço'
+                        right_action_items: [["magnify", lambda x: x], ["account-circle-outline", lambda x: x]]
+                        left_action_items:  [["menu", lambda x: nav_drawer.set_state("open")]]
+                        pos_hint: {'center_y': .97}
+                        orientation: "vertical"
+                        md_bg_color: '#2d2734'
+
+            MDNavigationDrawer:
+                id: nav_drawer
+                radius: (0, 16, 16, 0)
+
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerHeader:
+                        title: "PubliEnd"
+                        text: "Informática"
+                        source: "https://www.publi.com.br/wp-content/uploads/2020/01/publi.png"
+                        spacing: "4dp"
+                        padding: "12dp", 0, 0, "56dp"
+
+
+                    DrawerClickableItem:
+                        icon: "google-maps"
+                        text: "Meus endereços"
+                        on_release: root.manager.current = "TelaEnd"
+
+                    DrawerClickableItem:
+                        icon: "plus"
+                        text: "Novo endereço"
+                        on_release: root.manager.current = "TelaCriarEnd"
+
+                    DrawerClickableItem:
+                        icon: "map-search-outline"
+                        text: "Descubrir CEP"
+                        on_release: root.manager.current = "BuscaCEP"
+
+                    DrawerClickableItem:
+                        icon: "earth-plus"
+                        text: "Consultar CEP"
+                        on_release: root.manager.current = "BuscaEnd"
+
+                    MDNavigationDrawerDivider:
+                    DrawerClickableItem:
+                        icon: "account-circle-outline"
+                        text: "Minha Conta"
+
+                    DrawerClickableItem:
+                        icon: "cog-outline"
+                        text: "Configuração"
+
+                    DrawerClickableItem:
+                        icon: "link"
+                        text: "publi.com.br"
+
+##########################################################################################
+<BuscaEnd>:
+    MDScreen:
+        MDFloatLayout:
+            MDTextField:
+                id: cep1
+                size_hint_x: .8
+                hint_text: 'Digite o CEP:'
+                pos_hint: {'center_x': .5, 'center_y': .85}
+                max_text_length: 8
+                icon_right: "earth-plus"
+                helper_text: "Apenas Números(sem '-')"
+                input_filter: 'float'
+                font_size: '20sp'
+                helper_text_mode: "persistent"
+                min_text_length: 8
+
+    MDScreen:
+        MDFillRoundFlatIconButton:
+            size_hint_x: .8
+            md_bg_color: '#2d2734'
+            text_size: '25sp'
+            text: "Buscar Endereço"
+            icon: "home-search-outline"
+            icon_size: "25sp"
+            pos_hint: {"center_x": .5, "center_y": .77}
+            on_release: root.CEP()
+
+    MDLabel:
+
+        text: "Digite no campo a baixo o CEP que deseja descobrir o endereço!"
+        halign: "center"
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+
+    MDScreen:
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .3, .05
+            pos_hint: {'center_x': .5, 'center_y': .6}
+            orientation: 'vertical'
+            elevation: 2
+            style: 'outlined'
+            MDLabel:
+                id: cepin
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .7}
+
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .7, .05
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            orientation: 'vertical'
+            elevation: 2
+            style: 'outlined'
+            MDLabel:
+                id: logradouro
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .7}
+
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .7, .05
+            pos_hint: {'center_x': .5, 'center_y': .4}
+            orientation: 'vertical'
+            elevation: 2
+            style: 'outlined'
+            MDLabel:
+                id: complemento
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .7}
+
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .7, .05
+            pos_hint: {'center_x': .37, 'center_y': .3}
+            orientation: 'vertical'
+            elevation: 2
+            style: 'outlined'
+            MDLabel:
+                id: bairro
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .7}
+
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .7, .05
+            pos_hint: {'center_x': .37, 'center_y': .2}
+            orientation: 'vertical'
+            elevation: 2
+            style: 'outlined'
+            MDLabel:
+                id: localidade
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .2}
+
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .2, .05
+            pos_hint: {'center_x': .85, 'center_y': .3}
+            orientation: 'vertical'
+            elevation: 2
+            style: 'outlined'
+            MDLabel:
+                id: uf
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .7}
+
+        MDCard:
+            focus_color: "#BB86FC"
+            focus_behavior: True
+            ripple_behavior: True
+            orientation: 'vertical'
+            size_hint: .2, .05
+            pos_hint: {'center_x': .85, 'center_y': .2}
+            orientation: 'vertical'
+            elevation: 2
+            style: 'outlined'
+            MDLabel:
+                id: ddd
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .7}
+
+    MDScreen:
+        MDNavigationLayout:
+            MDScreenManager:
+                MDScreen:
+                    MDTopAppBar:
+                        title: 'Buscar Endereço'
+                        right_action_items: [["magnify", lambda x: x], ["account-circle-outline", lambda x: x]]
+                        left_action_items:  [["menu", lambda x: nav_drawer.set_state("open")]]
+                        pos_hint: {'center_y': .97}
+                        orientation: "vertical"
+                        md_bg_color: '#2d2734'
+
+            MDNavigationDrawer:
+                id: nav_drawer
+                radius: (0, 16, 16, 0)
+
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerHeader:
+                        title: "PubliEnd"
+                        text: "Informática"
+                        source: "https://www.publi.com.br/wp-content/uploads/2020/01/publi.png"
+                        spacing: "4dp"
+                        padding: "12dp", 0, 0, "56dp"
+
+
+                    DrawerClickableItem:
+                        icon: "google-maps"
+                        text: "Meus endereços"
+                        on_release: root.manager.current = "TelaEnd"
+
+                    DrawerClickableItem:
+                        icon: "plus"
+                        text: "Novo endereço"
+                        on_release: root.manager.current = "TelaCriarEnd"
+
+                    DrawerClickableItem:
+                        icon: "map-search-outline"
+                        text: "Descubrir CEP"
+                        on_release: root.manager.current = "BuscaCEP"
+
+                    DrawerClickableItem:
+                        icon: "earth-plus"
+                        text: "Consultar CEP"
+                        on_release: root.manager.current = "BuscaEnd"
+
+                    MDNavigationDrawerDivider:
+                    DrawerClickableItem:
+                        icon: "account-circle-outline"
+                        text: "Minha Conta"
+
+                    DrawerClickableItem:
+                        icon: "cog-outline"
+                        text: "Configuração"
+
+                    DrawerClickableItem:
+                        icon: "link"
+                        text: "publi.com.br"
